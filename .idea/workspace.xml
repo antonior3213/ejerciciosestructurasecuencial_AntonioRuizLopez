@@ -1,20 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c2c6823-cbdf-4963-81f4-0f723f4cb43c" name="Changes" comment="" />
+    <list default="true" id="6c2c6823-cbdf-4963-81f4-0f723f4cb43c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/ejerciciosestructuras.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ejercicio 1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ejercicio 2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ejercicio 3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ejercicio 4.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ejercicio 5.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000000292759927" />
+      <entry key="S2" value="1.018210566589251" />
+      <entry key="S5" value="1.388030118504142" />
+      <entry key="S10" value="2.6171725857629617" />
+      <entry key="S30" value="8.755234295399429" />
+      <entry key="S60" value="17.14713632801983" />
+      <entry key="M2" value="29.846329983502837" />
+      <entry key="M5" value="50.08674430980379" />
+      <entry key="M10" value="64.17015688984681" />
+      <entry key="M15" value="70.88571855851708" />
+      <entry key="M30" value="79.26310517504653" />
+      <entry key="H1" value="84.28047729113061" />
+      <entry key="H2" value="87.0440567631023" />
+      <entry key="H4" value="88.49682816580294" />
+      <entry key="D1" value="89.7458680792906" />
+      <entry key="W1" value="89.96360581297547" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="4.53574492680892E-37" />
+      <entry key="MS500" value="5.3883478490203656E-8" />
+      <entry key="S2" value="0.01735095446809944" />
+      <entry key="S5" value="0.30353369191837815" />
+      <entry key="S10" value="0.9707427740237526" />
+      <entry key="S30" value="2.783551245976647" />
+      <entry key="S60" value="4.149663169443292" />
+      <entry key="M2" value="5.410099047534071" />
+      <entry key="M5" value="6.846817773078153" />
+      <entry key="M10" value="7.695269641726748" />
+      <entry key="M15" value="8.064366320500495" />
+      <entry key="M30" value="8.494268660773841" />
+      <entry key="H1" value="8.736567117608406" />
+      <entry key="H2" value="8.865490686810684" />
+      <entry key="H4" value="8.932027213119483" />
+      <entry key="D1" value="8.988569721555418" />
+      <entry key="W1" value="8.998364594799423" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.02368307135172497" />
+      <entry key="MS500" value="0.47302886416361395" />
+      <entry key="S2" value="0.8589930497919945" />
+      <entry key="S5" value="1.564647621726518" />
+      <entry key="S10" value="3.435407916609286" />
+      <entry key="S30" value="11.349102095615603" />
+      <entry key="S60" value="21.122171448317957" />
+      <entry key="M2" value="35.115537943046775" />
+      <entry key="M5" value="56.844358289126845" />
+      <entry key="M10" value="71.80904425292375" />
+      <entry key="M15" value="78.90865009740139" />
+      <entry key="M30" value="87.73421552703311" />
+      <entry key="H1" value="93.0047245625365" />
+      <entry key="H2" value="95.90318215731821" />
+      <entry key="H4" value="97.42561856956186" />
+      <entry key="D1" value="98.73389055525901" />
+      <entry key="W1" value="98.9618920359379" />
+    </decayedShown>
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 4,
   "fromUser": false
 }]]></component>
   <component name="ProjectId" id="3LHEb1ChByOmtdqWQTiehQu9rng" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -22,12 +105,22 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.Ejercicio 1.executor": "Run",
+    "Python.Ejercicio 2.executor": "Run",
+    "Python.Ejercicio 3.executor": "Run",
+    "Python.Ejercicio 4.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "git-widget-placeholder": "main",
     "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "python.packages.toolwindow.project.migrated.to.right.top.v2": "true",
     "to.speed.mode.migration.done": "true"
   }
