@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c2c6823-cbdf-4963-81f4-0f723f4cb43c" name="Changes" comment="python" />
+    <list default="true" id="6c2c6823-cbdf-4963-81f4-0f723f4cb43c" name="Changes" comment="python">
+      <change afterPath="$PROJECT_DIR$/Ejercicio 6.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ejercicio 7.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejercicio 2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ejercicio 2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejercicio 5.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ejercicio 5.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,81 +26,81 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "antonior3213"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;antonior3213&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/antonior3213/ejerciciosestructuras.git",
-    "accountId": "734daea0-0959-4429-8975-e3c9ba3f17fa"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/antonior3213/ejerciciosestructuras.git&quot;,
+    &quot;accountId&quot;: &quot;734daea0-0959-4429-8975-e3c9ba3f17fa&quot;
   }
-}]]></component>
+}</component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0217928697867251" />
-      <entry key="MS500" value="1.4652248288515077" />
-      <entry key="S2" value="1.82587766493572" />
-      <entry key="S5" value="1.926331192740586" />
-      <entry key="S10" value="1.9624610084261003" />
-      <entry key="S30" value="1.9873270783247174" />
-      <entry key="S60" value="1.993671867005386" />
-      <entry key="M2" value="2.0353162729365657" />
-      <entry key="M5" value="5.4977681120002355" />
-      <entry key="M10" value="18.960162004664294" />
-      <entry key="M15" value="31.19406490532644" />
-      <entry key="M30" value="52.86749375429846" />
-      <entry key="H1" value="69.51679826624701" />
-      <entry key="H2" value="79.90791746904377" />
-      <entry key="H4" value="85.72380386553014" />
-      <entry key="D1" value="90.92038582190308" />
-      <entry key="W1" value="91.84492501242882" />
+      <entry key="MS100" value="1.0000000000444529" />
+      <entry key="MS500" value="1.0108786812508057" />
+      <entry key="S2" value="1.6544513152045517" />
+      <entry key="S5" value="2.6984522815060847" />
+      <entry key="S10" value="3.719530482781658" />
+      <entry key="S30" value="5.721618438623624" />
+      <entry key="S60" value="7.495324763955933" />
+      <entry key="M2" value="11.307770132979053" />
+      <entry key="M5" value="19.946425719261136" />
+      <entry key="M10" value="32.22745060028758" />
+      <entry key="M15" value="44.21081719653618" />
+      <entry key="M30" value="70.09452771014516" />
+      <entry key="H1" value="93.9001906595329" />
+      <entry key="H2" value="110.36725960070545" />
+      <entry key="H4" value="120.09804821870615" />
+      <entry key="D1" value="129.095479598928" />
+      <entry key="W1" value="130.72569614073285" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="7.469457873872583E-176" />
-      <entry key="S5" value="1.3670776688384548E-70" />
-      <entry key="S10" value="2.0601427245247637E-35" />
-      <entry key="S30" value="7.706613909917411E-12" />
-      <entry key="S60" value="6.90470354230091E-6" />
-      <entry key="M2" value="0.006978648291630353" />
-      <entry key="M5" value="0.47831632915529854" />
-      <entry key="M10" value="2.0339349596896783" />
-      <entry key="M15" value="3.3213327909520474" />
-      <entry key="M30" value="5.451262128685231" />
-      <entry key="H1" value="6.998844656241796" />
-      <entry key="H2" value="7.934974696106355" />
-      <entry key="H4" value="8.45028626831975" />
-      <entry key="D1" value="8.905893324547113" />
-      <entry key="W1" value="8.98649393430957" />
+      <entry key="MS100" value="3.581964220907342E-73" />
+      <entry key="MS500" value="3.242083893949582E-15" />
+      <entry key="S2" value="2.3861957187763807E-4" />
+      <entry key="S5" value="0.03556988203409919" />
+      <entry key="S10" value="0.18859987775501835" />
+      <entry key="S30" value="0.5778613597203889" />
+      <entry key="S60" value="0.8235177661354063" />
+      <entry key="M2" value="1.1276122367035275" />
+      <entry key="M5" value="1.5794294743684907" />
+      <entry key="M10" value="2.4084209401637975" />
+      <entry key="M15" value="3.40589624237028" />
+      <entry key="M30" value="5.675744744859712" />
+      <entry key="H1" value="7.772627662692458" />
+      <entry key="H2" value="9.212163262946289" />
+      <entry key="H4" value="10.057590526993447" />
+      <entry key="D1" value="10.835729624696276" />
+      <entry key="W1" value="10.976349987886628" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9868414469683786" />
-      <entry key="MS500" value="1.454463741763935" />
-      <entry key="S2" value="1.822430717550633" />
-      <entry key="S5" value="1.9248681054589976" />
-      <entry key="S10" value="1.9617143018284509" />
-      <entry key="S30" value="1.9870746973652313" />
-      <entry key="S60" value="1.993551848824441" />
-      <entry key="M2" value="2.0420497544595517" />
-      <entry key="M5" value="5.969827297312699" />
-      <entry key="M10" value="20.979181873935463" />
-      <entry key="M15" value="34.498324190797696" />
-      <entry key="M30" value="58.303889625115296" />
-      <entry key="H1" value="76.50577140303196" />
-      <entry key="H2" value="87.83719391047762" />
-      <entry key="H4" value="94.17102736944413" />
-      <entry key="D1" value="99.82573684615195" />
-      <entry key="W1" value="100.83134066568283" />
+      <entry key="MS100" value="0.9526379980862848" />
+      <entry key="MS500" value="1.001114492175022" />
+      <entry key="S2" value="1.650169633270831" />
+      <entry key="S5" value="2.7131506555557787" />
+      <entry key="S10" value="3.8553908938121184" />
+      <entry key="S30" value="6.240769169775542" />
+      <entry key="S60" value="8.27128025861052" />
+      <entry key="M2" value="12.39660517889814" />
+      <entry key="M5" value="21.500456042996298" />
+      <entry key="M10" value="34.615683860352966" />
+      <entry key="M15" value="47.59751217298607" />
+      <entry key="M30" value="75.75395740720202" />
+      <entry key="H1" value="101.66144386564758" />
+      <entry key="H2" value="119.5726040780294" />
+      <entry key="H4" value="130.15189245560316" />
+      <entry key="D1" value="139.93053269243413" />
+      <entry key="W1" value="141.70194812840833" />
     </decayedShown>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4,
-  "fromUser": false
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4,
+  &quot;fromUser&quot;: false
+}</component>
   <component name="ProjectId" id="3LHEb1ChByOmtdqWQTiehQu9rng" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -110,6 +116,8 @@
     "Python.Ejercicio 2.executor": "Run",
     "Python.Ejercicio 3.executor": "Run",
     "Python.Ejercicio 4.executor": "Run",
+    "Python.Ejercicio 5.executor": "Run",
+    "Python.Ejercicio 6.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
@@ -149,7 +157,15 @@
       <option name="project" value="LOCAL" />
       <updated>1793105124069</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="python">
+      <option name="closed" value="true" />
+      <created>1793105163442</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1793105163442</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
