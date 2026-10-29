@@ -5,6 +5,6 @@ calificacion_examen_final = float(input("Ingrese la calificacion del examen fina
 calificacion_trabajo_final = float(input("Ingrese la calificacion del trabajo final: "))
 
 promedio_notas = (primera_calificacion + segunda_calificacion + tercera_calificacion) / 3
-nota_final = promedio_notas * 0.55 + calificacion_examen_final * 0.30 + calificacion_trabajo_final * 0.15
+nota_fin = promedio_notas * 0.55 + calificacion_examen_final * 0.30 + calificacion_trabajo_final * 0.15
 
-print("Tu nota final es:", nota_final)
+print("Tu nota final es:", nota_fin)
