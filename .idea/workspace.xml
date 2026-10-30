@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c2c6823-cbdf-4963-81f4-0f723f4cb43c" name="Changes" comment="python">
-      <change afterPath="$PROJECT_DIR$/Ejercicio 10.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Ejercicio 9.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ejercicio 12.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ejercicio 13.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ejercicio 8.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ejercicio 8.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejercicio 11.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ejercicio 11.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,12 +31,12 @@
     &quot;assignee&quot;: &quot;antonior3213&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/antonior3213/ejerciciosestructuras.git&quot;,
-    &quot;accountId&quot;: &quot;734daea0-0959-4429-8975-e3c9ba3f17fa&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/antonior3213/ejerciciosestructuras.git",
+    "accountId": "6e8657ac-27ef-45e6-bdf2-189764f30762"
   }
-}</component>
+}]]></component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
       <entry key="MS100" value="1.0000000070850354" />
@@ -113,6 +113,8 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.Ejercicio 1.executor": "Run",
     "Python.Ejercicio 10.executor": "Run",
+    "Python.Ejercicio 11.executor": "Run",
+    "Python.Ejercicio 12.executor": "Run",
     "Python.Ejercicio 2.executor": "Run",
     "Python.Ejercicio 3.executor": "Run",
     "Python.Ejercicio 4.executor": "Run",
@@ -151,6 +153,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1793102660782</updated>
+      <workItem from="1793395670059" duration="1098000" />
     </task>
     <task id="LOCAL-00001" summary="python">
       <option name="closed" value="true" />
@@ -192,7 +195,15 @@
       <option name="project" value="LOCAL" />
       <updated>1793261283592</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="python">
+      <option name="closed" value="true" />
+      <created>1793395817533</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1793395817533</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,5 +212,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="python" />
     <option name="LAST_COMMIT_MESSAGE" value="python" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ejerciciosestructuras$Ejercicio_12.coverage" NAME="Ejercicio 12 Coverage Results" MODIFIED="1793396678820" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ejerciciosestructuras$Ejercicio_11.coverage" NAME="Ejercicio 11 Coverage Results" MODIFIED="1793396297568" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
