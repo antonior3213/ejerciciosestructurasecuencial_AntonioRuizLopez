@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c2c6823-cbdf-4963-81f4-0f723f4cb43c" name="Changes" comment="python">
-      <change afterPath="$PROJECT_DIR$/Ejercicio 14.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Ejercicio 15.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Ejercicio 16.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Ejercicio 17.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ejerciciosestructuras.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ejerciciosestructuras.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Soluciones/Ejercicios_estructura_secuencial_con_codigo.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -135,6 +131,7 @@
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "git-widget-placeholder": "main",
     "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "C:/Users/Usuario/PycharmProjects/ejerciciosestructuras/Soluciones",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -144,6 +141,11 @@
     "to.speed.mode.migration.done": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Usuario\PycharmProjects\ejerciciosestructuras\Soluciones" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -208,7 +210,15 @@
       <option name="project" value="LOCAL" />
       <updated>1793395817533</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="python">
+      <option name="closed" value="true" />
+      <created>1793706540239</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1793706540241</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

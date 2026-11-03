@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ejercicios estructura secuencial</title>
+<style>
+:root{
+  --bg:#e8eef6; --card:#f6f8fb; --ink:#12203a; --mute:#55627a; --line:#cbd5e3;
+  --signal:#1f6fd1; --signal-ink:#ffffff; --term:#0e1a2e; --term-ink:#dbe7f7; --term-dim:#8aa0c2;
+  --echo:#5fd0ff; --ok:#0f8a6b; --err:#ff9aa6; --k:#7b3fd1; --s:#0f8a6b; --n:#c2410c; --c:#74839d; --b:#1f6fd1;
+  --codebg:#eef2f8; --mark:#b9f0da; --mark-ink:#0b2a20;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#0d1424;--card:#141d31;--ink:#e6edf8;--mute:#8fa0bd;--line:#26324b;--codebg:#0f172a;
+    --signal:#4d9bff;--signal-ink:#06142b;--k:#c4a1ff;--s:#6fdcb8;--n:#ffb27a;--c:#7586a3;--b:#7db4ff;--term:#080e1b;
+    --mark:#2a6b55;--mark-ink:#e6fff6}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:16px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Segoe UI Variable","Segoe UI",system-ui,-apple-system,"Noto Sans",sans-serif}
+.mono,code,pre,input.val{font-family:"JetBrains Mono","Cascadia Code","Fira Code","DejaVu Sans Mono",ui-monospace,monospace}
+.wrap{display:grid;grid-template-columns:200px minmax(0,1fr);gap:40px;max-width:1180px;margin:0 auto;padding:0 24px}
+aside{position:sticky;top:0;align-self:start;padding:36px 0}
+aside h2{font-size:.95rem;margin:0 0 10px;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.grid a{display:block;text-align:center;padding:7px 0;border:1px solid var(--line);border-radius:6px;color:var(--ink);text-decoration:none;font-size:.85rem;background:var(--card)}
+.grid a:hover{border-color:var(--ink)}
+.grid a.on{background:var(--signal);border-color:var(--signal);color:var(--signal-ink);font-weight:700}
+aside .all{margin-top:16px;width:100%}
+header.top{padding:56px 0 28px}
+header.top h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.08;margin:0 0 12px;font-weight:800;letter-spacing:-.02em}
+header.top p{margin:0;max-width:54ch;color:var(--mute)}
+.flag{height:10px;margin-top:26px;border-radius:2px;background:
+ conic-gradient(var(--ink) 25%,transparent 0 50%,var(--ink) 0 75%,transparent 0) 0 0/20px 20px;max-width:200px;opacity:.9}
+section.ex{display:none;background:var(--card);border:1px solid var(--line);border-radius:10px;margin:0 0 22px;overflow:hidden}
+.ex-head{padding:20px 24px 16px;border-bottom:1px solid var(--line)}
+.ex-head h3{margin:0 0 4px;font-size:1.15rem;font-weight:700}
+.ex-head p{margin:0;max-width:75ch;white-space:pre-line}
+.ex-body{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}
+.pane{padding:18px 24px 22px;min-width:0}
+.pane+.pane{border-left:1px solid var(--line)}
+.pane h4{margin:0 0 10px;font-size:.85rem;font-weight:700;color:var(--mute);display:flex;justify-content:space-between;align-items:center;gap:8px}
+pre.code{margin:0;padding:14px 16px;background:var(--codebg);border:1px solid var(--line);border-radius:6px;overflow-x:auto;font-size:.8rem;line-height:1.6;tab-size:4}
+.k{color:var(--k);font-weight:600}.s{color:var(--s)}.n{color:var(--n)}.c{color:var(--c);font-style:italic}.b{color:var(--b)}
+button{font:inherit;font-size:.8rem;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:6px;padding:4px 10px}
+button:hover{border-color:var(--ink)}
+button.primary{background:var(--signal);border-color:var(--signal);color:var(--signal-ink);font-weight:700;padding:8px 12px}
+:focus-visible{outline:2px solid var(--b);outline-offset:2px}
+.fields{display:grid;gap:8px;margin-bottom:12px}
+.fields label{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;align-items:center;font-size:.85rem}
+input.val{width:100%;padding:6px 9px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);font-size:.82rem}
+.term{background:var(--term);color:var(--term-ink);border-radius:6px;padding:12px 14px;font-size:.8rem;line-height:1.55;white-space:pre-wrap;word-break:break-word;min-height:3.2em;margin:0}
+.term .in{color:var(--echo)}
+.term .pr{color:var(--term-dim)}
+.term .er{color:var(--err)}
+.actions{display:flex;gap:8px;margin-top:10px}
+footer{padding:20px 0 60px;color:var(--mute);font-size:.85rem}
+
+section.ex.active{display:block}
+header.top{padding:40px 0 20px}
+header.top h1{font-size:clamp(1.7rem,4vw,2.4rem)}
+.search{position:relative;margin-top:22px;max-width:640px}
+.search input{width:100%;padding:12px 14px;font:inherit;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+.search input:focus{border-color:var(--ink);outline:2px solid var(--signal);outline-offset:0}
+#sug{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:30;background:var(--card);border:1px solid var(--ink);border-radius:8px;max-height:380px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,.14)}
+#sug[hidden]{display:none}
+.sug-h{padding:10px 14px 4px;font-size:.8rem;color:var(--mute);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px;padding:4px 14px 12px}
+.chips button{border-radius:999px;padding:3px 12px}
+.opt{display:block;width:100%;text-align:left;border:0;border-top:1px solid var(--line);border-radius:0;background:transparent;padding:9px 14px;font-size:.9rem}
+.opt:first-of-type{border-top:0}
+.opt[aria-selected="true"],.opt:hover{background:var(--bg)}
+.opt b{display:block;font-size:.9rem;margin-bottom:2px}
+.opt .ln{display:block;color:var(--mute);font-size:.82rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.opt .ln.mono{font-size:.78rem}
+.opt .tag{font-weight:400;color:var(--mute);font-size:.78rem;margin-left:6px}
+.none{padding:12px 14px;color:var(--mute);font-size:.9rem}
+mark{background:var(--mark);color:var(--mark-ink);border-radius:2px;padding:0 1px}
+.pager{display:flex;justify-content:space-between;gap:10px;padding:14px 24px;border-top:1px solid var(--line)}
+.pager button{padding:7px 14px}
+.pager button[disabled]{opacity:.4;cursor:default}
+.wait{color:var(--term-dim)}
+.sr{position:absolute;left:-9999px}
+@media (max-width:900px){
+  .wrap{grid-template-columns:1fr;gap:0;padding:0 14px}
+  aside{position:static;padding:20px 0 0}
+  .grid{grid-template-columns:repeat(10,1fr)}
+  .ex-body{grid-template-columns:1fr}
+  .pane+.pane{border-left:0;border-top:1px solid var(--line)}
+  header.top{padding-top:24px}
+}
+@media (max-width:480px){.grid{grid-template-columns:repeat(5,1fr)}.fields label{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<aside>
+  <h2>Ejercicios</h2>
+  <nav class="grid" id="nav" aria-label="Índice de ejercicios"></nav>
+  <button class="all" id="reset-all">Limpiar todos los valores</button>
+</aside>
+<main>
+  <header class="top">
+    <h1>Ejercicios estructura secuencial</h1>
+    <p>Elige un ejercicio en el menú o búscalo. Escribe tus propios valores y el resultado aparece al momento.</p>
+    <div class="search">
+      <label for="q" class="sr">Buscar en enunciados y código</label>
+      <input id="q" type="search" placeholder="Buscar en enunciados y código" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false" aria-controls="sug" aria-autocomplete="list">
+      <div id="sug" role="listbox" hidden></div>
+    </div>
+  </header>
+  <div id="list"></div>
+  <footer>La salida se calcula en el navegador con una copia fiel de cada programa. Los errores salen con el mismo nombre que daría Python.</footer>
+</main>
+</div>
+<script>
+const DATA = {"enun": {"1": "Escribir un programa que pregunte al usuario su nombre, y luego lo salude.", "2": "Calcular el perímetro y área de un rectángulo dada su base y su altura.", "3": "Dados los catetos de un triángulo rectángulo, calcular su hipotenusa.", "4": "Dados dos números, mostrar la suma, resta, división y multiplicación de ambos.", "5": "Escribir un programa que convierta un valor dado en grados Fahrenheit a grados Celsius. Recordar que la fórmula para la conversión es: C = (F-32)*5/9", "6": "Calcular la media de tres números pedidos por teclado.", "7": "Realiza un programa que reciba una cantidad de minutos y muestre por pantalla a cuantas horas y minutos corresponde. Por ejemplo: 1000 minutos son 16 horas y 40 minutos.", "8": "Un vendedor recibe un sueldo base más un 10% extra por comisión de sus ventas, el vendedor desea saber cuánto dinero obtendrá por concepto de comisiones por las tres ventas que realiza en el mes y el total que recibirá en el mes tomando en cuenta su sueldo base y comisiones.", "9": "Una tienda ofrece un descuento del 15% sobre el total de la compra y un cliente desea saber cuánto deberá pagar finalmente por su compra.", "10": "Un alumno desea saber cuál será su calificación final en la materia de Algoritmos. Dicha calificación se compone de los siguientes porcentajes:\n•  55% del promedio de sus tres calificaciones parciales.\n•  30% de la calificación del examen final.\n•  15% de la calificación de un trabajo final.", "11": "Pide al usuario dos números y muestra la “distancia” entre ellos (el valor absoluto de su diferencia, de modo que el resultado sea siempre positivo).", "12": "Pide al usuario dos pares de números x1,y2 y x2,y2, que representen dos puntos en el plano. Calcula y muestra la distancia entre ellos.", "13": "Realizar un algoritmo que lea un número y que muestre su raíz cuadrada y su raíz cúbica. Python3 no tiene ninguna función predefinida que permita calcular la raíz cúbica, ¿Cómo se puede calcular?", "14": "Dado un número de dos cifras, diseñe un algoritmo que permita obtener el número invertido. Ejemplo, si se introduce 23 que muestre 32.", "15": "Dadas dos variables numéricas A y B, que el usuario debe teclear, se pide realizar un algoritmo que intercambie los valores de ambas variables y muestre cuánto valen al final las dos variables.", "16": "Dos vehículos viajan a diferentes velocidades (v1 y v2) y están distanciados por una distancia d. El que está detrás viaja a una velocidad mayor. Se pide hacer un algoritmo para ingresar la distancia entre los dos vehículos (km) y sus respectivas velocidades (km/h) y con esto determinar y mostrar en que tiempo (minutos) alcanzará el vehículo más rápido al otro.", "17": "Un ciclista parte de una ciudad A a las HH horas, MM minutos y SS segundos. El tiempo de viaje hasta llegar a otra ciudad B es de T segundos. Escribir un algoritmo que determine la hora de llegada a la ciudad B.", "18": "Pedir el nombre y los dos apellidos de una persona y mostrar las iniciales.", "19": "Escribir un algoritmo para calcular la nota final de un estudiante, considerando que: por cada respuesta correcta 5 puntos, por una incorrecta -1 y por respuestas en blanco 0. Imprime el resultado obtenido por el estudiante.", "20": "Diseñar un algoritmo que nos diga el dinero que tenemos (en euros y céntimos) después de pedirnos cuantas monedas tenemos (de 2€, 1€, 50 céntimos, 20 céntimos o 10 céntimos)."}, "code": {"1": "print(\"Dime tu nombre \")\nnombre = input()\nprint(\"Hola\", nombre)", "2": "import math\nbase = float(input(\"Ingrese el valor de la base: \"))\naltura = float(input(\"Ingrese el valor de la altura: \"))\n\narea = base * altura\nperimetro = 2 * (base + altura)\n\nprint(\"El área del rectángulo es:\", area)\nprint(\"El perímetro es:\", perimetro)", "3": "import math\ncatetos = float(input(\"Dime cuanto es el cateto1: \"))\ncatetos2 = float(input(\"Dime cuanto es el cateto2: \"))\nipotenusa = math.hypot(catetos2, catetos)\nprint(\"ipotenusa: \", ipotenusa)", "4": "import math\n\nnumero1 = float(input(\"Escribe un número: \"))\nnumero2 = float(input(\"Escribe otro número: \"))\n\nsuma = numero1 + numero2\nresto = numero1 - numero2\nmultiplicacion = numero1 * numero2\n\nprint(f\"La suma de {numero1} y {numero2} es {suma}\")\nprint(f\"La resta de {numero1} y {numero2} es {resto}\")\nprint(f\"La multiplicación de {numero1} y {numero2} es {multiplicacion}\")\n\nif numero2 != 0:\n    division = numero1 / numero2\n    print(f\"La división de {numero1} y {numero2} es {division}\")\nelse:\n    print(\"No se puede dividir entre cero.\")", "5": "f = float(input(\"Grados Fahrenheit: \"))\nc = (f - 32) * 5 / 9\nprint(f\"{f} °F = {c:.2f} °C\")", "6": "num1 = int(input(\"Introduce el primer número: \"))\nnum2 = int(input(\"Introduce el segundo número: \"))\nnum3 = int(input(\"Introduce el tercer número: \"))\nmedia = (num1 + num2 + num3) / 3\nprint(\"La media es: \", media)", "7": "minutos = int(input(\"Ingrese la cantidad de minutos: \"))\n\nres_horas = minutos // 60\nres_minutos = minutos % 60\nprint(res_horas, \"horas y\", res_minutos, \"minutos\")", "8": "sueldo_base = float(input(\"Introduce el sueldo base: \"))\nn = int(input(\"Numero de ventas: \"))\n\nsuma = 0\nfor i in range(n):\n    venta = float(input(f\"Importe de la venta {i + 1}: \"))\n    suma = suma + venta\n\ncomision = suma * 0.10\ntotal = sueldo_base + comision\n\nprint(\"Comision:\", comision)\nprint(\"Total del mes:\", total)", "9": "precio =  float (input(\"Introduce el precio del producto: \"))\ndescuento = precio * 0.15\ndescuentofinal = precio - descuento\nprint(\"El descuento final es: \", descuentofinal)", "10": "primera_calificacion = float(input(\"Ingrese la primera calificacion: \"))\nsegunda_calificacion = float(input(\"Ingrese la segunda calificacion: \"))\ntercera_calificacion = float(input(\"Ingrese la tercera calificacion: \"))\ncalificacion_examen_final = float(input(\"Ingrese la calificacion del examen final: \"))\ncalificacion_trabajo_final = float(input(\"Ingrese la calificacion del trabajo final: \"))\n\npromedio_notas = (primera_calificacion + segunda_calificacion + tercera_calificacion) / 3\nnota_fin = promedio_notas * 0.55 + calificacion_examen_final * 0.30 + calificacion_trabajo_final * 0.15\n\nprint(\"Tu nota final es:\", nota_fin)", "11": "num1 = float(input(\"Ingrese el primer numero: \"))\nnum2 = float(input(\"Ingrese el segundo numero: \"))\nif num1 > num2:\n    distancia = num1 - num2\nelif num2 > num1:\n    distancia = num2 - num1\nprint(\"La distancia entre estos numeros es \", distancia)", "12": "x1 = float(input(\"Ingrese x1: \"))\ny1 = float(input(\"Ingrese y1: \"))\nx2 = float(input(\"Ingrese x2: \"))\ny2 = float(input(\"Ingrese y2: \"))\n\ndx = x2 - x1\ndy = y2 - y1\n\ndistancia = (dx * dx + dy * dy) ** 0.5\n\nprint(\"La distancia entre los puntos es \", distancia)", "13": "num = float(input(\"Ingrese un numero: \"))\n\nraiz_cuadrada = num ** 0.5\nraiz_cubica = num ** (1/3)\n\nprint(\"Raiz cuadrada:\", raiz_cuadrada)\nprint(\"Raiz cubica:\", raiz_cubica)", "14": "n = int(input(\"Ingrese un numero de dos cifras: \"))\nunidades = n % 10\ndecenas = n // 10\ninvertido = (unidades * 10) + decenas\nprint(invertido)", "15": "a = int(input(\"Introduce un número: \"))\nb = int(input(\"Introduce otro número: \"))\naux = a\na = b\nb = aux\nprint(\"A vale \", a)\nprint(\"B vale \", b)", "16": "d = float(input(\"Distancia entre los coches (km): \"))\nv1 = float(input(\"Velocidad del coche de atrás (km/h): \"))\nv2 = float(input(\"Velocidad del coche de delante (km/h): \"))\nacercamiento = v1 - v2\nhoras = d / acercamiento\nminutos = horas * 60\nprint(\"El coche lo alcanza en\", minutos, \"minutos\")", "17": "hh = int(input(\"Hora de salida: \"))\nmm = int(input(\"Minutos de salida: \"))\nss = int(input(\"Segundos de salida: \"))\nt = int(input(\"Segundos de viaje: \"))\nsalida = hh * 3600 + mm * 60 + ss\nprint(salida)", "18": "nombre = input(\"Nombre: \")\napellido1 = input(\"Primer apellido: \")\napellido2 = input(\"Segundo apellido: \")\nprint(nombre, apellido1, apellido2)", "19": "correctas = int(input(\"Respuestas correctas: \"))\nincorrectas = int(input(\"Respuestas incorrectas: \"))\nblancas = int(input(\"Respuestas en blanco: \"))\nprint(correctas, incorrectas, blancas)", "20": "m2 = int(input(\"Monedas de 2 €: \"))\nm1 = int(input(\"Monedas de 1 €: \"))\nm50 = int(input(\"Monedas de 50 céntimos: \"))\nm20 = int(input(\"Monedas de 20 céntimos: \"))\nm10 = int(input(\"Monedas de 10 céntimos: \"))\nprint(m2, m1, m50, m20, m10)"}};
+
+/* ---------- utilidades Python ---------- */
+class PyErr extends Error{constructor(n,m){super(m);this.pyname=n}}
+function pf(x){
+  if(Number.isNaN(x))return "nan";
+  if(!isFinite(x))return x<0?"-inf":"inf";
+  if(x===0)return Object.is(x,-0)?"-0.0":"0.0";
+  const a=Math.abs(x);
+  if(a>=1e16||a<1e-4){
+    let s=x.toExponential();
+    return s.replace(/e([+-])(\d)$/,"e$10$2");
+  }
+  const s=String(x);
+  return s.includes(".")?s:s+".0";
+}
+const f2=x=>isFinite(x)?x.toFixed(2):pf(x);
+const noDot=s=>s.replace(/\.0$/,"");
+function fmtC(re,im){
+  const r=noDot(pf(re)), i=noDot(pf(im));
+  const is=(im<0||Object.is(im,-0))?i:"+"+i;
+  return re===0&&!Object.is(re,-0)?i+"j":"("+r+is+"j)";
+}
+function fpow(x,y){
+  if(x<0&&!Number.isInteger(y)){
+    const r=Math.pow(-x,y), t=Math.PI*y;
+    return fmtC(r*Math.cos(t),r*Math.sin(t));
+  }
+  return pf(Math.pow(x,y));
+}
+const fl=x=>Math.floor(x);
+const mod=(a,b)=>((a%b)+b)%b;
+function toFloat(s){
+  const t=s.trim();
+  if(/^[+-]?(\d+(_\d+)*(\.(\d+(_\d+)*)?)?|\.\d+(_\d+)*)([eE][+-]?\d+)?$/.test(t))return parseFloat(t.replace(/_/g,""));
+  if(/^[+-]?(inf|infinity)$/i.test(t))return t[0]==="-"?-Infinity:Infinity;
+  if(/^[+-]?nan$/i.test(t))return NaN;
+  throw new PyErr("ValueError","could not convert string to float: '"+s+"'");
+}
+function toInt(s){
+  const t=s.trim();
+  if(/^[+-]?\d+(_\d+)*$/.test(t))return parseInt(t.replace(/_/g,""),10);
+  throw new PyErr("ValueError","invalid literal for int() with base 10: '"+s+"'");
+}
+
+/* ---------- los 20 programas ---------- */
+const N=(l,d)=>({l,d,k:"n"}), S=(l,d)=>({l,d,k:"s"});
+const R={
+1:{f:[S("Nombre","Antonio")],run(io){io.print("Dime tu nombre ");const n=io.s("");io.print("Hola",n);}},
+2:{f:[N("Base","8"),N("Altura","5")],run(io){
+  const b=io.f("Ingrese el valor de la base: "),a=io.f("Ingrese el valor de la altura: ");
+  io.print("El área del rectángulo es:",pf(b*a));io.print("El perímetro es:",pf(2*(b+a)));}},
+3:{f:[N("Cateto 1","3"),N("Cateto 2","4")],run(io){
+  const c1=io.f("Dime cuanto es el cateto1: "),c2=io.f("Dime cuanto es el cateto2: ");
+  io.print("ipotenusa: ",pf(Math.hypot(c2,c1)));}},
+4:{f:[N("Primer número","12"),N("Segundo número","4")],run(io){
+  const a=io.f("Escribe un número: "),b=io.f("Escribe otro número: ");
+  io.print(`La suma de ${pf(a)} y ${pf(b)} es ${pf(a+b)}`);
+  io.print(`La resta de ${pf(a)} y ${pf(b)} es ${pf(a-b)}`);
+  io.print(`La multiplicación de ${pf(a)} y ${pf(b)} es ${pf(a*b)}`);
+  if(b!==0)io.print(`La división de ${pf(a)} y ${pf(b)} es ${pf(a/b)}`);
+  else io.print("No se puede dividir entre cero.");}},
+5:{f:[N("Grados Fahrenheit","100")],run(io){
+  const f=io.f("Grados Fahrenheit: ");const c=(f-32)*5/9;
+  io.print(`${pf(f)} °F = ${f2(c)} °C`);}},
+6:{f:[N("Primer número","7"),N("Segundo número","8"),N("Tercer número","9")],run(io){
+  const a=io.i("Introduce el primer número: "),b=io.i("Introduce el segundo número: "),c=io.i("Introduce el tercer número: ");
+  io.print("La media es: ",pf((a+b+c)/3));}},
+7:{f:[N("Minutos","1000")],run(io){
+  const m=io.i("Ingrese la cantidad de minutos: ");
+  io.print(String(fl(m/60)),"horas y",String(mod(m,60)),"minutos");}},
+8:{dyn:true,f:[N("Sueldo base","1200"),N("Número de ventas","3")],extra:["500","800","300"],run(io){
+  const sb=io.f("Introduce el sueldo base: "),n=io.i("Numero de ventas: ");
+  let suma=0;for(let i=0;i<n;i++){suma=suma+io.f(`Importe de la venta ${i+1}: `);}
+  const com=suma*0.10,total=sb+com;
+  io.print("Comision:",pf(com));io.print("Total del mes:",pf(total));}},
+9:{f:[N("Precio","80")],run(io){
+  const p=io.f("Introduce el precio del producto: ");
+  io.print("El descuento final es: ",pf(p-p*0.15));}},
+10:{f:[N("Primera calificación","8"),N("Segunda calificación","7"),N("Tercera calificación","9"),N("Examen final","6"),N("Trabajo final","10")],run(io){
+  const a=io.f("Ingrese la primera calificacion: "),b=io.f("Ingrese la segunda calificacion: "),c=io.f("Ingrese la tercera calificacion: "),
+        ex=io.f("Ingrese la calificacion del examen final: "),tr=io.f("Ingrese la calificacion del trabajo final: ");
+  const prom=(a+b+c)/3;io.print("Tu nota final es:",pf(prom*0.55+ex*0.30+tr*0.15));}},
+11:{f:[N("Primer número","5"),N("Segundo número","12")],run(io){
+  const a=io.f("Ingrese el primer numero: "),b=io.f("Ingrese el segundo numero: ");
+  let d;if(a>b)d=a-b;else if(b>a)d=b-a;
+  if(d===undefined)throw new PyErr("NameError","name 'distancia' is not defined");
+  io.print("La distancia entre estos numeros es ",pf(d));}},
+12:{f:[N("x1","0"),N("y1","0"),N("x2","3"),N("y2","4")],run(io){
+  const x1=io.f("Ingrese x1: "),y1=io.f("Ingrese y1: "),x2=io.f("Ingrese x2: "),y2=io.f("Ingrese y2: ");
+  const dx=x2-x1,dy=y2-y1;io.print("La distancia entre los puntos es ",pf(Math.pow(dx*dx+dy*dy,0.5)));}},
+13:{f:[N("Número","27")],run(io){
+  const n=io.f("Ingrese un numero: ");
+  io.print("Raiz cuadrada:",fpow(n,0.5));io.print("Raiz cubica:",fpow(n,1/3));}},
+14:{f:[N("Número de dos cifras","23")],run(io){
+  const n=io.i("Ingrese un numero de dos cifras: ");
+  const u=mod(n,10),d=fl(n/10);io.print(String(u*10+d));}},
+15:{f:[N("Número A","3"),N("Número B","7")],run(io){
+  let a=io.i("Introduce un número: "),b=io.i("Introduce otro número: ");
+  const aux=a;a=b;b=aux;io.print("A vale ",String(a));io.print("B vale ",String(b));}},
+16:{f:[N("Distancia (km)","50"),N("Velocidad de atrás (km/h)","120"),N("Velocidad de delante (km/h)","90")],run(io){
+  const d=io.f("Distancia entre los coches (km): "),v1=io.f("Velocidad del coche de atrás (km/h): "),v2=io.f("Velocidad del coche de delante (km/h): ");
+  const ac=v1-v2;if(ac===0)throw new PyErr("ZeroDivisionError","float division by zero");
+  io.print("El coche lo alcanza en",pf(d/ac*60),"minutos");}},
+17:{f:[N("Hora de salida","8"),N("Minutos de salida","30"),N("Segundos de salida","15"),N("Segundos de viaje","3600")],run(io){
+  const hh=io.i("Hora de salida: "),mm=io.i("Minutos de salida: "),ss=io.i("Segundos de salida: ");io.i("Segundos de viaje: ");
+  io.print(String(hh*3600+mm*60+ss));}},
+18:{f:[S("Nombre","Antonio"),S("Primer apellido","Ruiz"),S("Segundo apellido","López")],run(io){
+  const a=io.s("Nombre: "),b=io.s("Primer apellido: "),c=io.s("Segundo apellido: ");io.print(a,b,c);}},
+19:{f:[N("Correctas","14"),N("Incorrectas","3"),N("En blanco","3")],run(io){
+  const a=io.i("Respuestas correctas: "),b=io.i("Respuestas incorrectas: "),c=io.i("Respuestas en blanco: ");
+  io.print(String(a),String(b),String(c));}},
+20:{f:[N("Monedas de 2 €","2"),N("Monedas de 1 €","3"),N("Monedas de 50 céntimos","4"),N("Monedas de 20 céntimos","5"),N("Monedas de 10 céntimos","6")],run(io){
+  const v=[io.i("Monedas de 2 €: "),io.i("Monedas de 1 €: "),io.i("Monedas de 50 céntimos: "),io.i("Monedas de 20 céntimos: "),io.i("Monedas de 10 céntimos: ")];
+  io.print(...v.map(String));}}
+};
+
+/* ---------- resaltado de sintaxis ---------- */
+const KW=new Set("import from as if elif else for in range while def return and or not True False None".split(" "));
+const BI=new Set("print input float int str math len".split(" "));
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+function hl(code){
+  const re=/(#.*)|([fF]?"(?:[^"\\]|\\.)*"|[fF]?'(?:[^'\\]|\\.)*')|(\b\d+(?:\.\d+)?\b)|([A-Za-z_][A-Za-z_0-9]*)/g;
+  let out="",last=0,m;
+  while((m=re.exec(code))){
+    out+=esc(code.slice(last,m.index));last=re.lastIndex;
+    if(m[1])out+=`<span class="c">${esc(m[1])}</span>`;
+    else if(m[2])out+=`<span class="s">${esc(m[2])}</span>`;
+    else if(m[3])out+=`<span class="n">${m[3]}</span>`;
+    else if(KW.has(m[4]))out+=`<span class="k">${m[4]}</span>`;
+    else if(BI.has(m[4]))out+=`<span class="b">${m[4]}</span>`;
+    else out+=m[4];
+  }
+  return out+esc(code.slice(last));
+}
+
+/* ---------- búsqueda: utilidades ---------- */
+const norm=s=>[...s].map(c=>c.normalize("NFD").replace(/[\u0300-\u036f]/g,"")).join("").toLowerCase();
+function ranges(nt,terms){
+  const r=[];
+  terms.forEach(t=>{if(!t)return;let p=nt.indexOf(t);while(p>=0){r.push([p,p+t.length]);p=nt.indexOf(t,p+t.length)}});
+  r.sort((x,y)=>x[0]-y[0]);
+  const m=[];r.forEach(x=>{const l=m[m.length-1];if(l&&x[0]<=l[1])l[1]=Math.max(l[1],x[1]);else m.push([...x])});
+  return m;
+}
+function markStr(s,terms){
+  let out="",p=0;
+  ranges(norm(s),terms).forEach(([a,b])=>{out+=esc(s.slice(p,a))+"<mark>"+esc(s.slice(a,b))+"</mark>";p=b});
+  return out+esc(s.slice(p));
+}
+function snippet(text,terms){
+  const nt=norm(text);let pos=-1;
+  terms.forEach(t=>{const p=nt.indexOf(t);if(p>=0&&(pos<0||p<pos))pos=p});
+  if(pos<0)pos=0;
+  const s=Math.max(0,pos-35),e=Math.min(text.length,pos+90);
+  return (s>0?"…":"")+markStr(text.slice(s,e),terms)+(e<text.length?"…":"");
+}
+function markIn(el,terms){
+  if(!el.dataset.orig)el.dataset.orig=el.innerHTML;
+  const w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),nodes=[];
+  while(w.nextNode())nodes.push(w.currentNode);
+  nodes.forEach(n=>{
+    const tx=n.nodeValue,r=ranges(norm(tx),terms);if(!r.length)return;
+    const f=document.createDocumentFragment();let p=0;
+    r.forEach(([a,b])=>{f.append(tx.slice(p,a));const m=document.createElement("mark");m.textContent=tx.slice(a,b);f.append(m);p=b});
+    f.append(tx.slice(p));n.replaceWith(f);
+  });
+}
+function clearMarks(){document.querySelectorAll("[data-orig]").forEach(el=>{el.innerHTML=el.dataset.orig;delete el.dataset.orig})}
+
+const INDEX=[];
+for(let i=1;i<=20;i++)INDEX.push({i,e:DATA.enun[i],c:DATA.code[i],ne:norm(DATA.enun[i]),nc:norm(DATA.code[i])});
+function search(q){
+  const terms=norm(q).split(/\s+/).filter(Boolean);
+  if(!terms.length)return {terms,res:[]};
+  const res=[];
+  INDEX.forEach(x=>{
+    let ok=true,score=0,hitE=false,hitC=false;
+    terms.forEach(t=>{
+      const num=/^\d+$/.test(t)&&String(x.i)===t;
+      const inE=x.ne.includes(t),inC=x.nc.includes(t);
+      if(!(num||inE||inC))ok=false;
+      if(num)score+=100;if(inE){score+=4;hitE=true}if(inC){score+=1;hitC=true}
+    });
+    if(ok)res.push({x,score,hitE,hitC});
+  });
+  res.sort((a,b)=>b.score-a.score||a.x.i-b.x.i);
+  return {terms,res:res.slice(0,8)};
+}
+
+/* ---------- interfaz ---------- */
+const list=document.getElementById("list"), nav=document.getElementById("nav");
+const state={};
+const emptyState=i=>[];
+function required(i){
+  const r=R[i];let n=r.f.length;
+  if(r.dyn){const k=parseInt(state[i][1],10);if(Number.isInteger(k)&&k>0)n+=Math.min(k,50)}
+  return n;
+}
+function run(i){
+  const r=R[i],vals=state[i],term=document.getElementById("t"+i);
+  const need=required(i);let missing=0;
+  for(let k=0;k<need;k++)if(!(vals[k]??"").trim()&&!(k<r.f.length&&r.f[k].k==="s"&&false))missing++;
+  if(r.dyn){const k=parseInt(vals[1],10);if(Number.isInteger(k)&&k>50){term.innerHTML='<span class="wait">Para esta demo usa 50 ventas o menos.</span>';return}}
+  if(missing){term.innerHTML='<span class="wait">Rellena '+(missing===need?"los valores":"los "+missing+" valores que faltan")+" para ver el resultado.</span>";return}
+  let idx=0;const lines=[];
+  const io={
+    print(...a){lines.push(`<span class="pr">${esc(a.join(" "))}</span>`)},
+    input(prompt,conv){
+      const raw=idx<vals.length?(vals[idx]??""):"";idx++;
+      lines.push(`<span class="pr">${esc(prompt)}</span><span class="in">${esc(raw)}</span>`);
+      return conv?conv(raw):raw;
+    },
+    f(p){return io.input(p,toFloat)}, i(p){return io.input(p,toInt)}, s(p){return io.input(p)}
+  };
+  try{r.run(io);}
+  catch(e){
+    if(e instanceof PyErr)lines.push(`<span class="er">Traceback (most recent call last):\n${e.pyname}: ${esc(e.message)}</span>`);
+    else throw e;
+  }
+  term.innerHTML=lines.join("\n");
+}
+function fieldHTML(i,k,label,kind,ph){
+  const v=state[i][k]??"";
+  return `<label><span>${esc(label)}</span><input class="val" data-ex="${i}" data-k="${k}" inputmode="${kind==="n"?"decimal":"text"}" autocomplete="off" spellcheck="false" placeholder="p. ej. ${esc(ph)}" value="${esc(v)}"></label>`;
+}
+function fieldsHTML(i){
+  const r=R[i];let h="";
+  r.f.forEach((f,k)=>{h+=fieldHTML(i,k,f.l,f.k,f.d)});
+  if(r.dyn){
+    const n=Math.max(0,Math.min(50,parseInt(state[i][1],10)||0));
+    for(let k=0;k<n;k++)h+=fieldHTML(i,2+k,`Venta ${k+1}`,"n",r.extra[k%r.extra.length]);
+  }
+  return h;
+}
+function build(){
+  let navh="",h="";
+  for(let i=1;i<=20;i++){
+    state[i]=emptyState(i);
+    navh+=`<a href="#e${i}" data-n="${i}">${i}</a>`;
+    h+=`<section class="ex" id="e${i}" aria-label="Ejercicio ${i}">
+      <div class="ex-head"><h3>Ejercicio ${i}</h3><p>${esc(DATA.enun[i])}</p></div>
+      <div class="ex-body">
+        <div class="pane"><h4>Código <button data-copy="${i}">Copiar</button></h4><pre class="code">${hl(DATA.code[i])}</pre></div>
+        <div class="pane"><h4>Resultado <button data-reset="${i}">Limpiar</button></h4>
+          <div class="fields" id="f${i}">${fieldsHTML(i)}</div>
+          <pre class="term" id="t${i}" aria-live="polite"></pre></div>
+      </div>
+      <div class="pager">
+        <button data-go="${i-1}" ${i===1?"disabled":""}>Ejercicio anterior</button>
+        <button data-go="${i+1}" ${i===20?"disabled":""}>Ejercicio siguiente</button>
+      </div></section>`;
+  }
+  nav.innerHTML=navh;list.innerHTML=h;
+  for(let i=1;i<=20;i++)run(i);
+}
+build();
+const links=[...nav.querySelectorAll("a")];
+
+/* ---------- una pantalla por ejercicio ---------- */
+let pendingTerms=null;
+function show(i,terms){
+  i=Math.min(20,Math.max(1,i));
+  clearMarks();
+  document.querySelectorAll("section.ex").forEach(s=>s.classList.toggle("active",s.id==="e"+i));
+  links.forEach(a=>{const on=a.dataset.n==String(i);a.classList.toggle("on",on);on?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current")});
+  if(terms&&terms.length){
+    const s=document.getElementById("e"+i);
+    markIn(s.querySelector(".ex-head p"),terms);markIn(s.querySelector("pre.code"),terms);
+  }
+  window.scrollTo({top:0});
+}
+function go(i,terms){
+  pendingTerms=terms||null;
+  if(location.hash==="#e"+i){show(i,pendingTerms);pendingTerms=null}
+  else location.hash="e"+i;
+}
+function fromHash(){
+  const m=/^#e(\d+)$/.exec(location.hash);
+  show(m?+m[1]:1,pendingTerms);pendingTerms=null;
+}
+window.addEventListener("hashchange",fromHash);
+fromHash();
+
+/* ---------- entradas del usuario ---------- */
+list.addEventListener("input",e=>{
+  const t=e.target;if(!t.classList.contains("val"))return;
+  const i=+t.dataset.ex,k=+t.dataset.k;state[i][k]=t.value;
+  if(R[i].dyn&&k===1){
+    const pos=t.selectionStart;
+    document.getElementById("f"+i).innerHTML=fieldsHTML(i);
+    const nt=document.querySelector(`#f${i} input[data-k="1"]`);nt.focus();nt.setSelectionRange(pos,pos);
+  }
+  run(i);
+});
+function clearEx(i){state[i]=emptyState(i);document.getElementById("f"+i).innerHTML=fieldsHTML(i);run(i)}
+list.addEventListener("click",e=>{
+  const b=e.target.closest("button");if(!b)return;
+  if(b.dataset.copy){
+    const i=b.dataset.copy;
+    navigator.clipboard?.writeText(DATA.code[i]).then(()=>{b.textContent="Copiado";setTimeout(()=>b.textContent="Copiar",1200)},()=>{});
+  }
+  if(b.dataset.reset)clearEx(+b.dataset.reset);
+  if(b.dataset.go&&!b.disabled)go(+b.dataset.go);
+});
+document.getElementById("reset-all").addEventListener("click",()=>{for(let i=1;i<=20;i++)clearEx(i)});
+
+/* ---------- buscador con sugerencias ---------- */
+const q=document.getElementById("q"), sug=document.getElementById("sug");
+const IDEAS=["hipotenusa","input","float","for","math","Fahrenheit","descuento","media","distancia"];
+let items=[],active=-1,curTerms=[];
+function openSug(){sug.hidden=false;q.setAttribute("aria-expanded","true")}
+function closeSug(){sug.hidden=true;q.setAttribute("aria-expanded","false");active=-1;q.removeAttribute("aria-activedescendant")}
+function renderSug(){
+  const val=q.value.trim();
+  items=[];active=-1;
+  if(!val){
+    sug.innerHTML='<div class="sug-h">Prueba con</div><div class="chips">'+IDEAS.map(w=>`<button type="button" data-idea="${esc(w)}">${esc(w)}</button>`).join("")+"</div>";
+    openSug();return;
+  }
+  const {terms,res}=search(val);curTerms=terms.filter(t=>!/^\d+$/.test(t)||true);
+  if(!res.length){sug.innerHTML='<div class="none">Sin resultados. Prueba otra palabra.</div>';openSug();return}
+  sug.innerHTML=res.map((r,k)=>{
+    const tags=[];let lines="";
+    if(r.hitE){tags.push("enunciado");lines+=`<span class="ln">${snippet(r.x.e,terms)}</span>`}
+    if(r.hitC){
+      tags.push("código");
+      const L=r.x.c.split("\n"),nl=L.map(norm);
+      let li=nl.findIndex(l=>terms.every(t=>l.includes(t)));
+      if(li<0)li=nl.findIndex(l=>terms.some(t=>l.includes(t)));
+      lines+=`<span class="ln mono">${li>=0?snippet(L[li].trim(),terms):""}</span>`;
+    }
+    return `<button type="button" class="opt" role="option" id="opt${k}" aria-selected="false" data-i="${r.x.i}"><b>Ejercicio ${r.x.i}<span class="tag">${tags.join(" y ")}</span></b>${lines}</button>`;
+  }).join("");
+  items=[...sug.querySelectorAll(".opt")];
+  openSug();
+}
+function setActive(k){
+  items.forEach((el,j)=>el.setAttribute("aria-selected",j===k?"true":"false"));
+  active=k;
+  if(k>=0){q.setAttribute("aria-activedescendant","opt"+k);items[k].scrollIntoView({block:"nearest"})}
+  else q.removeAttribute("aria-activedescendant");
+}
+function choose(i){
+  const {terms}=search(q.value);
+  closeSug();go(i,terms);
+}
+q.addEventListener("input",renderSug);
+q.addEventListener("focus",renderSug);
+q.addEventListener("keydown",e=>{
+  if(e.key==="ArrowDown"){e.preventDefault();if(sug.hidden)renderSug();if(items.length)setActive((active+1)%items.length)}
+  else if(e.key==="ArrowUp"){e.preventDefault();if(items.length)setActive(active<=0?items.length-1:active-1)}
+  else if(e.key==="Enter"){
+    if(active>=0)choose(+items[active].dataset.i);
+    else if(items.length)choose(+items[0].dataset.i);
+  }
+  else if(e.key==="Escape"){closeSug()}
+});
+sug.addEventListener("mousedown",e=>e.preventDefault());
+sug.addEventListener("click",e=>{
+  const o=e.target.closest(".opt");if(o){choose(+o.dataset.i);return}
+  const c=e.target.closest("[data-idea]");if(c){q.value=c.dataset.idea;renderSug();q.focus()}
+});
+document.addEventListener("click",e=>{if(!e.target.closest(".search"))closeSug()});
+</script>
+</body>
+</html>
