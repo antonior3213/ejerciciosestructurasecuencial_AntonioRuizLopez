@@ -1,0 +1,6 @@
+m2 = int(input("Monedas de 2 €: "))
+m1 = int(input("Monedas de 1 €: "))
+m50 = int(input("Monedas de 50 céntimos: "))
+m20 = int(input("Monedas de 20 céntimos: "))
+m10 = int(input("Monedas de 10 céntimos: "))
+print(m2, m1, m50, m20, m10)
